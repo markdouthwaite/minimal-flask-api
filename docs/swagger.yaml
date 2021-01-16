@@ -1,0 +1,19 @@
+openapi: 3.0.0
+info:
+  title: Minimal Flask API Example
+  description: This file is for demonstration purposes only, you should fill in your own details.
+  version: 0.0.0
+servers:
+  - url: http://localhost:5000
+    description: This is a dummy value describing the base URL for the API.
+paths:
+  /:
+    get:
+      summary: Returns the default response from the API.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: The default response.
+          content:
+            text/plain:
+              "Hello, world"

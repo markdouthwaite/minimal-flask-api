@@ -1,0 +1,4 @@
+locust
+black
+isort
+pytest
