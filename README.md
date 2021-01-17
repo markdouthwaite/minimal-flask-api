@@ -16,8 +16,23 @@ To run the basic server, you'll need to install a few requirements. To do this, 
 pip install -r requirements/common.txt
 ```
 
-This will install only the dependencies required to run the server. To boot up the 
-default server, you can run:
+This will install only the dependencies required to run the server. 
+
+### Creating a model
+
+Before deploying a model, you'll first need to train a model. There's a demo pipeline
+setup in this project. To train the model, run:
+
+```bash
+python steps/train.py --path=data/heart-disease.csv 
+```
+
+This'll produce a couple of files in the `/data` directory, including a pickled 
+`Pipeline` object. Now you can deploy this pipeline as an API!
+
+### Launching the API
+
+To boot up the default server, you can run:
 
 ```bash
 bash bin/run.sh
@@ -37,6 +52,46 @@ curl localhost:5000/health
 
 And receive the response `OK` and status code `200`. 
 
+### Querying the model
+
+You can now query the model using:
+
+```bash
+curl --location --request POST '127.0.0.1:5000/predict' \
+--header 'Content-Type: application/json' \
+-d @data/payload.json
+```
+
+Where the payload looks like:
+
+```json
+{
+    "age": 63.0,
+    "sex": 1.0,
+    "cp": 3.0,
+    "trestbps": 145.0,
+    "chol": 233.0,
+    "fbs": 1.0,
+    "restecg": 0.0,
+    "thalach": 150.0,
+    "exang": 0.0,
+    "oldpeak": 2.3,
+    "slope": 0.0,
+    "ca": 0.0,
+    "thal": 1.0
+}
+```
+
+You should see a response looking something like:
+
+```json
+{
+    "diagnosis": "heart-disease"
+}
+```
+
+And that's it, you have a model wrapped in a web API!
+
 ## Running with `docker`
 
 Unsurprisingly, you'll need [Docker](https://www.docker.com/products/docker-desktop) 
@@ -53,7 +108,9 @@ To launch the containerised app, run:
 docker run -p 5000:5000 flask-app
 ```
 
-You should see your server boot up, and should be accessible as before.
+You should see your server boot up, and should be accessible as before!
+
+With that done, you've got a containerised ML web API ready to go.
 
 ## Developing with the template
 

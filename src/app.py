@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.register_blueprint(errors)
 
 
-@app.route("/predict")
+@app.route("/predict", methods=["POST"])
 def predict():
     return predict_handler(request)
 
