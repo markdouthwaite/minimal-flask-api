@@ -1,6 +1,7 @@
 # minimal-flask-api
 
-This repository provides a minimal configuration for a 'production-ready' Flask API 
+This [template repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+ provides a minimal configuration for a 'production-ready' Flask API 
 project. It includes a basic project structure and 'seed' files for functional and 
 non-function testing, a basic application structure (including error-handling 
 blueprint), and some basic useful Gunicorn & Docker config files too.
@@ -23,9 +24,10 @@ bash bin/run.sh
 ```
 
 This will start a [Gunicorn](https://gunicorn.org/) server that wraps the Flask app 
-defined in `src/app.py`. Note that this is one of the recommended ways of deploying a
-Flask app 'in production'. The server shipped with Flask is intended for development
-purposes only.  
+defined in `src/app.py`. Note that [this is one of the recommended ways of deploying a
+Flask app 'in production'](https://flask.palletsprojects.com/en/1.1.x/deploying/wsgi-standalone/). 
+The server shipped with Flask is [intended for development
+purposes only](https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment).  
 
 You should now be able to send:
 
@@ -52,3 +54,16 @@ docker run -p 5000:5000 flask-app
 ```
 
 You should see your server boot up, and should be accessible as before.
+
+## Developing with the template
+
+To develop the template for your own project, you'll need to make sure to [create your
+own repository from this template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) 
+and then install the project's development dependencies. You can do this with:
+
+```bash
+pip install -r requirements/develop.txt
+```
+
+This'll install some style formatting and testing tools (including `pytest` and 
+`locust`).
