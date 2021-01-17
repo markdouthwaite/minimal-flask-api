@@ -1,15 +1,16 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 
 from .errors import errors
+from .handlers import predict as predict_handler
 
 
 app = Flask(__name__)
 app.register_blueprint(errors)
 
 
-@app.route("/")
-def index():
-    return Response("Hello, world!", status=200)
+@app.route("/predict")
+def predict():
+    return predict_handler(request)
 
 
 @app.route("/health")
