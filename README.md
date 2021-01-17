@@ -4,7 +4,7 @@ This [template repository](https://docs.github.com/en/github/creating-cloning-an
  provides a minimal configuration for a 'production-ready' Flask API 
 project. It includes a basic project structure and 'seed' files for functional and 
 non-function testing, a basic application structure (including error-handling 
-blueprint), and some basic useful Gunicorn & Docker config files too.
+blueprint), and a few assorted 'getting started' files too.
 
 The template has been set up for use with Python >= 3.7 and [Docker](https://www.docker.com/). 
 
