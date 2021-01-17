@@ -17,3 +17,13 @@ paths:
           content:
             text/plain:
               "Hello, world"
+  /health:
+    get:
+      summary: Used to check the API is responsive.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: The default response.
+          content:
+            text/plain:
+              "OK"
