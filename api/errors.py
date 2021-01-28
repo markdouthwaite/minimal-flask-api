@@ -1,6 +1,5 @@
 from flask import Blueprint, Response
 
-
 errors = Blueprint("errors", __name__)
 
 

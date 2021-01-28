@@ -1,4 +1,4 @@
-from locust import task, between, HttpUser
+from locust import HttpUser, between, task
 
 
 class DefaultUser(HttpUser):
