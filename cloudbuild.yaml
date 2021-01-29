@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: ['-c', 'docker build -t gcr.io/$PROJECT_ID/flask-demo .']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/flask-demo']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: ['run', 'deploy', 'flask-demo', '--image', 'gcr.io/$PROJECT_ID/flask-demo', '--platform', 'managed', '--region', 'europe-west1', '--allow-unauthenticated']
+images:
+  - "gcr.io/$PROJECT_ID/flask-demo"
