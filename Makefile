@@ -10,7 +10,7 @@ style:
 
 check-style:
 	@black api --check
-	@flake8 orion --count --show-source --statistics --ignore=E203,W503
+	@flake8 api --count --show-source --statistics --ignore=E203,W503
 
 start:
 	@bash bin/run.sh
